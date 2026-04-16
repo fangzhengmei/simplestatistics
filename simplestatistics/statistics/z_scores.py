@@ -33,13 +33,13 @@ def z_scores(data, sample=True):
 
     Examples:
         >>> z_scores([-2, -1, 0, 1, 2])
-        [1.2649110640673518, 0.6324555320336759, 0.0, -0.6324555320336759, -1.2649110640673518]
+        [-1.2649110640673518, -0.6324555320336759, 0.0, 0.6324555320336759, 1.2649110640673518]
         >>> z_scores([-2, -1, 0, 1, 2], False)
-        [1.414213562373095, 0.7071067811865475, 0.0, -0.7071067811865475, -1.414213562373095]
+        [-1.414213562373095, -0.7071067811865475, 0.0, 0.7071067811865475, 1.414213562373095]
         >>> z_scores([1, 2])
-        [0.7071067811865475, -0.7071067811865475]
+        [-0.7071067811865475, 0.7071067811865475]
         >>> z_scores([1, 2], False)
-        [1.0, -1.0]
+        [-1.0, 1.0]
         >>> z_scores([90]) # a z score for one value is not defined
         >>> z_scores(4) # a z score for one value is not defined
     """
@@ -54,5 +54,5 @@ def z_scores(data, sample=True):
         mean_of_data = decimalize(mean(data))
         sd_of_data = decimalize(standard_deviation(data, sample))
 
-        scores = [float((mean_of_data - ii) / sd_of_data) for ii in data]
+        scores = [float((ii - mean_of_data) / sd_of_data) for ii in data]
         return(scores)
