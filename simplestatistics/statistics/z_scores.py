@@ -20,7 +20,7 @@ def z_scores(data, sample=True):
             z_i = \\frac{X_i - \\bar{X}}{s_X}
 
     In English:
-        - Subract the value from the mean.
+        - Subtract the mean from the value.
         - Divide the result by the standard deviation.
 
     Args:
